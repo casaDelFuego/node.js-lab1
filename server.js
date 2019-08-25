@@ -4,15 +4,15 @@ const server = express()
 server.use(express.static(`${__dirname}/static/`))
 
 server.get('/word', (request, response) => {
-  console.log('i hit the get word route')
+  // console.log('i hit the get word route')
   const searchTerm = request.query.sw
-  const filtered = data.filter(w => w.searchWord === searchTerm)
+  const filtered = data.filter(w => w.searchWord.includes(searchTerm))
   // console.log(filtered)
   response.json(filtered).end()
 })
 
 server.post('/word', (request, response) => {
-  console.log('i hit the post word route')
+  // console.log('i hit the post word route')
   const sw = request.query.sw
   const lang = request.query.lang
   const tran = request.query.tran
@@ -23,7 +23,7 @@ server.post('/word', (request, response) => {
 })
 
 server.delete('/word', (request, response) => {
-  console.log('i hit the delete route')
+  // console.log('i hit the delete route')
   const sw = request.query.sw
   console.log(sw)
   const needToDelete = data.find(w => w.searchWord === sw)
@@ -36,7 +36,7 @@ server.delete('/word', (request, response) => {
 })
 
 server.get('/words/', (request, response) => {
-  console.log('i hit word with two slashes')
+  // console.log('i hit word with two slashes')
   response.send(data.map(w => w.searchWord))
 })
 

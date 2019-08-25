@@ -4,34 +4,28 @@
 	<meta charset="utf-8">
 	<title>Tiny translator</title>
 	<link rel="stylesheet" href="./style.css">
-	<script src="./script.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <script src="./script.js" charset="utf-8"></script>
 </head>
 <body>
 	<h1>Welcome</h1>
 
   <div class="searchWord">
     Word <input type="text" id="search"/>
-    <button>search</button>
+    <button id="searchBtn">Search</button>
+    <div id="searchResult">
+      <!-- <button id="deleteBtn">Delete</button> -->
+    </div>
   </div>
 
-  <div class="searchResult">
-
+  <div class="addWord">
+    English <input type="text" id="addEng"/>
+    Russian <input type="text" id="addRus"/>
+    <button id="addBtn">Add</button>
   </div>
 
-	<!-- </p>
-	<div class="title">
-		Title: <input type="text" id="title" value="" />
-	</div>
-	<div class="author">
-		Author: <input type="text" id="author" value="" />
-	</div>
-	<div class="response">
 
-	</div>
-	<button type="button" id="postRecipeButton">Add new recipe</button>
-	<p>
-		HTML, CSS and image files should be treated as <em>static</em> files - send them using <code>sendFile</code>. <br/>
-		Use <code>send</code> for API endpoints.
-		</p> -->
 </body>
 </html>
