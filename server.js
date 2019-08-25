@@ -8,11 +8,9 @@ server.get('/word', (request, response) => {
   const searchTerm = request.query.sw
   const filtered = data.filter(w => w.searchWord === searchTerm)
   // console.log(filtered)
-  response.send(filtered)
+  response.json(filtered).end()
 })
-server.get('/word/', (request, response) => {
-  response.send(data.map(w => w.searchWord))
-})
+
 server.post('/word', (request, response) => {
   console.log('i hit the post word route')
   const sw = request.query.sw
@@ -38,7 +36,7 @@ server.delete('/word', (request, response) => {
 })
 
 server.get('/words/', (request, response) => {
-  console.log('i hit word with two slash')
+  console.log('i hit word with two slashes')
   response.send(data.map(w => w.searchWord))
 })
 
