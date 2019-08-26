@@ -18,6 +18,7 @@ server.post('/word', (request, response) => {
   const tran = request.query.tran
   const tranLang = request.query.tranLang
   data.push({ searchWord: sw, language: lang, translation: tran, translatedLanguage: tranLang })
+  console.table(request.query)
   console.table(data)
   response.json(data).end()
 })
@@ -37,7 +38,7 @@ server.delete('/word', (request, response) => {
 
 server.get('/words/', (request, response) => {
   // console.log('i hit word with two slashes')
-  response.send(data.map(w => w.searchWord))
+  response.send(data.map(w => [w.searchWord, w.translation]))
 })
 
 server.get('/lang/:x', (request, response) => {

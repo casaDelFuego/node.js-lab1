@@ -5,3 +5,11 @@
 div {
   margin: 1em;
 }
+
+.deleteBtn {
+  margin-left: 1em;
+}
+
+.img {
+  float: right;
+}
