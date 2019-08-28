@@ -28,9 +28,9 @@ $(document).ready(() => {
   })
 
   function refreshList () {
-    $.get('/words/')
+    $.get('/word/')
     .done((data) => {
-      $("#fullList").empty()
+      $('#fullList').empty()
       data.forEach(pair => {
         const elem = $('<p>' + pair[0] + ' - ' + pair[1] + '<button class="deleteBtn">' + 'Delete' + '</button>' + '</p>')
 

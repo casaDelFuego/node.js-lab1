@@ -4,11 +4,18 @@ const server = express()
 server.use(express.static(`${__dirname}/static/`))
 
 server.get('/word', (request, response) => {
-  // console.log('i hit the get word route')
   const searchTerm = request.query.sw
-  const filtered = data.filter(w => w.searchWord.includes(searchTerm))
-  // console.log(filtered)
-  response.json(filtered).end()
+  if (searchTerm === undefined ){
+    console.log('i hit word with two slashes')
+    response.send(data.map(w => [w.searchWord, w.translation]))
+  } else {
+    let smallLettersWord = searchTerm.toLowerCase()
+    console.log('i hit the get word route')
+    const filtered = data.filter(w => w.searchWord.includes(smallLettersWord))
+    console.log(filtered)
+    response.json(filtered).end()
+
+  }
 })
 
 server.post('/word', (request, response) => {
@@ -36,19 +43,17 @@ server.delete('/word', (request, response) => {
   response.json(data).end()
 })
 
-server.get('/words/', (request, response) => {
-  // console.log('i hit word with two slashes')
-  response.send(data.map(w => [w.searchWord, w.translation]))
-})
 
 server.get('/lang/:x', (request, response) => {
   const xLang = request.params.x
   console.log(xLang)
   const mappedData = data.map(l => {
-    if (xLang === 'English') {
+    if (xLang.toLowerCase() === 'english') {
       return l.searchWord
-    } else {
+    } else if (xLang.toLowerCase() === 'russian') {
       return l.translation
+    } else {
+      return 'There is no such language'
     }
   })
   response.json(mappedData).end()
